@@ -73,6 +73,24 @@ export function handleRecognition() {
       text = text.replace(regex, abbreviations[key]);
     });
 
+    const numberedPoints = {
+      "first point": "1)",
+      "second point": "2)",
+      "third point": "3)",
+      "fourth point": "4)",
+      "fifth point": "5)",
+      "sixth point": "6)",
+      "seventh point": "7)",
+      "eighth point": "8)",
+      "ninth point": "9)",
+      "tenth point": "10)"
+    };
+
+    Object.keys(numberedPoints).forEach(key => {
+      const regex = new RegExp(`\\b${key}\\b`, 'gi');
+      text = text.replace(regex, numberedPoints[key]);
+    });
+
     const spokenDatePattern = /(\d{1,2})(?:st|nd|rd|th)?\s+([a-zA-Z]+)\s+(\d{4})/;
     text = text.replace(spokenDatePattern, (match, day, month, year) => {
       const months = {
@@ -99,6 +117,8 @@ export function handleRecognition() {
         .replaceAll(/\bapostrophe\b/gi, "'")
         .replaceAll(/\bcoma\b/gi, ",")
         .replaceAll(/\bcomma\b/gi, ",")
+        .replaceAll(/\bsingle inverted\b/gi, "'")
+        .replaceAll(/\bdouble inverted\b/gi, '"')
         .replaceAll(/\bdouble[ -]?quote\b/gi, '"')
         .replaceAll(/\bopen[ -]?bracket\b/gi, "(")
         .replaceAll(/\bclose[ -]?bracket\b/gi, ")")
@@ -122,7 +142,81 @@ export function handleRecognition() {
         .replaceAll(/\bno[ -]?sub\b/gi, "</sub>")
         .replaceAll(/\bsuper\b/gi, "<sup>")
         .replaceAll(/\bno[ -]?super\b/gi, "</sup>");
-    } else {
+    } else if (lang === 'mr') { // Marathi
+      text = text
+        .replaceAll("अंडरस्कोर", "_")
+        .replaceAll("कॉपीराइट", "©")
+        .replaceAll("वर्टिकल बार", "|")
+        .replaceAll("फुलस्टॉप", ". ")
+        .replaceAll("स्टॉप", ". ")
+        .replaceAll("कोलन", ":")
+        .replaceAll("सेमीकोलन", ";")
+        .replaceAll("डॅश", "-")
+        .replaceAll("स्पेस", " ")
+        .replaceAll("अपोस्ट्रॉफी", "'")
+        .replaceAll("सिंगल इन्व्हर्टेड", "'")
+        .replaceAll("डबल इन्व्हर्टेड", '"')
+        .replaceAll("कोमा", ",")
+        .replaceAll("डबल कोट", '"')
+        .replaceAll("ओपन ब्रॅकेट", "(")
+        .replaceAll("क्लोज ब्रॅकेट", ")")
+        .replaceAll("टक्के", "%")
+        .replaceAll("अॅट द रेट", "@")
+        .replaceAll("एक्सक्लमेशन मार्क", "!")
+        .replaceAll("प्रश्नचिन्ह", "?")
+        .replaceAll("अँपरसँड", "&")
+        .replaceAll("नवीन ओळ", "<br/>")
+        .replaceAll("नवीन परिच्छेद", "&nbsp;".repeat(14))
+        .replaceAll("बोल्ड सुरू", "<strong>")
+        .replaceAll("बोल्ड समाप्त", "</strong>")
+        .replaceAll("इटॅलिक सुरू", "<em>")
+        .replaceAll("इटॅलिक समाप्त", "</em>")
+        .replaceAll("अंडरलाइन सुरू", "<u>")
+        .replaceAll("अंडरलाइन समाप्त", "</u>")
+        .replaceAll("स्ट्राइक सुरू", "<s>")
+        .replaceAll("स्ट्राइक समाप्त", "</s>")
+        .replaceAll("सब सुरू", "<sub>")
+        .replaceAll("सब समाप्त", "</sub>")
+        .replaceAll("सुपर सुरू", "<sup>")
+        .replaceAll("सुपर समाप्त", "</sup>");
+    } else if (lang === 'gu') { // Gujarati
+      text = text
+        .replaceAll("અન્ડરસ્કોર", "_")
+        .replaceAll("કોપીરાઇટ", "©")
+        .replaceAll("વર્ટિકલ બાર", "|")
+        .replaceAll("ફુલસ્ટોપ", ". ")
+        .replaceAll("સ્ટોપ", ". ")
+        .replaceAll("કોલન", ":")
+        .replaceAll("સેમીકોલન", ";")
+        .replaceAll("ડેશ", "-")
+        .replaceAll("સ્પેસ", " ")
+        .replaceAll("એપોસ્ટ્રોફી", "'")
+        .replaceAll("સિંગલ ઇન્વર્ટેડ", "'")
+        .replaceAll("ડબલ ઇન્વર્ટેડ", '"')
+        .replaceAll("કોમા", ",")
+        .replaceAll("ડબલ કોટ", '"')
+        .replaceAll("ઓપન બ્રેકેટ", "(")
+        .replaceAll("ક્લોઝ બ્રેકેટ", ")")
+        .replaceAll("ટકા", "%")
+        .replaceAll("એટ ધ રેટ", "@")
+        .replaceAll("એક્સક્લેમેશન માર્ક", "!")
+        .replaceAll("પ્રશ્નચિહ્ન", "?")
+        .replaceAll("એમ્પરસેન્ડ", "&")
+        .replaceAll("નવી લાઇન", "<br/>")
+        .replaceAll("નવો ફકરો", "&nbsp;".repeat(14))
+        .replaceAll("બોલ્ડ શરૂ", "<strong>")
+        .replaceAll("બોલ્ડ સમાપ્ત", "</strong>")
+        .replaceAll("ઇટાલિક શરૂ", "<em>")
+        .replaceAll("ઇટાલિક સમાપ્ત", "</em>")
+        .replaceAll("અન્ડરલાઇન શરૂ", "<u>")
+        .replaceAll("અન્ડરલાઇન સમાપ્ત", "</u>")
+        .replaceAll("સ્ટ્રાઇક શરૂ", "<s>")
+        .replaceAll("સ્ટ્રાઇક સમાપ્ત", "</s>")
+        .replaceAll("સબ શરૂ", "<sub>")
+        .replaceAll("સબ સમાપ્ત", "</sub>")
+        .replaceAll("સુપર શરૂ", "<sup>")
+        .replaceAll("સુપર સમાપ્ત", "</sup>");
+    } else { // Hindi
       text = text
         .replaceAll("अंडरस्कोर", "_")
         .replaceAll("कॉपीराइट", "©")
@@ -134,6 +228,8 @@ export function handleRecognition() {
         .replaceAll("डॅश", "-")
         .replaceAll("स्पेस", " ")
         .replaceAll("अपोस्ट्रॉफी", "'")
+        .replaceAll("सिंगल इनवर्टेड", "'")
+        .replaceAll("डबल इनवर्टेड", '"')
         .replaceAll("कॉमा", ",")
         .replaceAll("डबल कोट", '"')
         .replaceAll("ओपन ब्रॅकेट", "(")
