@@ -167,6 +167,7 @@ export function handleRecognition() {
       .replaceAll("एक्सक्लमेशन मार्क", "!")
       .replaceAll("प्रश्नचिन्ह", "?")
       .replaceAll("अँपरसँड", "&")
+      .replaceAll("न्यू लाईन", "<br/>")
       .replaceAll("न्यू लाइन", "<br/>")
       .replaceAll("न्यू पॅराग्राफ", "&nbsp;".repeat(14))
       .replaceAll("बोल्ड", "<strong>")
