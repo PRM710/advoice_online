@@ -252,6 +252,7 @@ export function handleRecognition() {
       .replaceAll("डबल इन्व्हर्टेड", '"')
       .replaceAll("डबल इन्वर्टर", '"')
       .replaceAll("कॉमा", ",")
+      .replaceAll("एड कोमा", ",")
       .replaceAll("डबल कोट", '"')
       .replaceAll("ओपन ब्रॅकेट", "(")
       .replaceAll("क्लोज ब्रॅकेट", ")")
