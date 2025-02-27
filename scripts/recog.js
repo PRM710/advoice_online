@@ -106,11 +106,14 @@ export function handleRecognition() {
     if (lang === 'en') {
       text = text
         .replaceAll(/\bunderscore\b/gi, "_")
+        .replaceAll(/\bunder score\b/gi, "_")
         .replaceAll(/\bcopyright symbol\b/gi, "©")
         .replaceAll(/\bvertical bar\b/gi, "|")
         .replaceAll(/\bfull[ -]?stop\b/gi, ". ")
         .replaceAll(/\bstop\b/gi, ". ")
         .replaceAll(/\bcolon\b/gi, ":")
+        .replaceAll(/\bsemi colon\b/gi, ";")
+        .replaceAll(/\bsemicolon\b/gi, ";")
         .replaceAll(/\bsemi[ -]?colon\b/gi, ";")
         .replaceAll(/\bdash\b/gi, "-")
         .replaceAll(/\bspace\b/gi, " ")
@@ -145,6 +148,7 @@ export function handleRecognition() {
     } else if (lang === 'mr') { // Marathi
     text = text
       .replaceAll("अंडरस्कोर", "_")
+      .replaceAll("अंडर स्कोर", "_")
       .replaceAll("कॉपीराइट", "©")
       .replaceAll("कॉपीराईट", "©")
       .replaceAll("कॉपी राईट", "©")
