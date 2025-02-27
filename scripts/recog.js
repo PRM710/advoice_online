@@ -190,7 +190,7 @@ export function handleRecognition() {
       .replaceAll("नो सुपर", "</sup>");
   } else if (lang === 'gu') { // Gujarati
     text = text
-      .replaceAll("અન્ડરસ્કોર", "_")
+      .replaceAll("અન્ડર સ્કોર", "_")
       .replaceAll("કોપીરાઇટ", "©")
       .replaceAll("વર્ટિકલ બાર", "|")
       .replaceAll("ફુલસ્ટોપ", ". ")
@@ -210,9 +210,12 @@ export function handleRecognition() {
       .replaceAll("ટકા", "%")
       .replaceAll("એટ ધ રેટ", "@")
       .replaceAll("એક્સક્લેમેશન માર્ક", "!")
+      .replaceAll("એક્સ્લામેશન માર્ક", "!")
       .replaceAll("પ્રશ્નચિહ્ન", "?")
+      .replaceAll("ક્વેસ્ચન માર્ક", "?")
       .replaceAll("એમ્પરસેન્ડ", "&")
       .replaceAll("ન્યૂ લાઇન", "<br/>")
+      .replaceAll("ન્યુ લાઈન", "<br/>")
       .replaceAll("ન્યૂ પેરાગ્રાફ", "&nbsp;".repeat(14))
       .replaceAll("બોલ્ડ", "<strong>")
       .replaceAll("નો બોલ્ડ", "</strong>")
