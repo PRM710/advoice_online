@@ -17,6 +17,15 @@
 <script>
 document.addEventListener("DOMContentLoaded", async function () {
     async function authenticateUser() {
+        // Check if user credentials exist in local storage
+        let savedUser = localStorage.getItem("user");
+        if (savedUser) {
+            let userData = JSON.parse(savedUser);
+            console.log("User already authenticated:", userData.assignedTo);
+            alert(`Welcome back, ${userData.assignedTo}!`);
+            return;
+        }
+
         let assignedTo = prompt("Enter your username (assignedTo):");
         let licenseKey = prompt("Enter your license key:");
 
@@ -51,6 +60,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             } else {
                 console.log("Authentication successful for:", data.assignedTo);
                 alert(`Welcome, ${data.assignedTo}!`);
+
+                // Store user details in localStorage to persist session
+                localStorage.setItem("user", JSON.stringify({ assignedTo, licenseKey }));
             }
         } catch (error) {
             console.error("Error authenticating user:", error);
@@ -61,8 +73,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     authenticateUser();
 });
-
 </script>
+
 
 <body>
     
