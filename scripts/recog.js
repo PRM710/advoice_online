@@ -177,6 +177,7 @@ export function handleRecognition() {
       .replaceAll("ॲट द रेट", "@")
       .replaceAll("एक्स्प्लानेशन मार्क", "!")
       .replaceAll("एक्सक्लामेषण मार्क", "!")
+      .replaceAll("एक्सप्लेनेशन मार्क", "!")
       .replaceAll("क्वेश्चन मार्क", "?")
       .replaceAll("अँपरसँड", "&")
       .replaceAll("न्यू लाईन", "<br/>")
