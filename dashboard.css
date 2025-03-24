@@ -319,17 +319,23 @@ th {
     cursor: pointer;
 }
 
-.botttomPart {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-bottom: 20% ;
+.bottomPart {
+    position: fixed;
+    bottom: 0;
+    left: 5%; /* Match sidenav width */
+    right: 0;
+    background-color: #e4e4e4; /* Match page background */
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
 }
+
 .bottomSect {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 .select-lang {
     display: flex;
